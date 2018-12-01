@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/bahrus/h2o-lilies/issues"
   },
-  "homepage": "https://github.com/bahrus/h2o-lilies#readme"
+  "homepage": "https://github.com/bahrus/h2o-lilies#readme",
+  "dependencies": {
+    "h2o-tf": "0.0.2"
+  }
 }
