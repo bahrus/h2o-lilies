@@ -18,5 +18,8 @@
   "homepage": "https://github.com/bahrus/h2o-lilies#readme",
   "dependencies": {
     "h2o-tf": "0.0.2"
+  },
+  "devDependencies": {
+    "jiife": "0.0.8"
   }
 }
