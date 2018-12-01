@@ -79,7 +79,7 @@ function XtallatX(superClass) {
          * @param detail Information to be passed with the event
          * @param asIs If true, don't append event name with '-changed'
          */
-        de(name, detail, asIs) {
+        de(name, detail, asIs = false) {
             const eventName = name + (asIs ? '' : '-changed');
             const newEvent = new CustomEvent(eventName, {
                 detail: detail,
@@ -135,6 +135,7 @@ class H2O_TF extends XtallatX(HTMLElement) {
         this._getTarget = nv;
     }
     connectedCallback() {
+        this.style.display = 'none';
         this._upgradeProperties([disabled, 'transform', 'target']);
         this._c = true;
         this.onPropsChange();
