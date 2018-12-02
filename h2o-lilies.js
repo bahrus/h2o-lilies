@@ -34,6 +34,7 @@ export class H2OLilies extends H2O_TF {
                 };
                 context.leaf.items.push(newLeaf);
                 context.leaf = newLeaf;
+                context.stack.push(newLeaf);
                 context.processChildren = true;
             },
             'a': (context) => {
@@ -48,6 +49,7 @@ export class H2OLilies extends H2O_TF {
                 };
                 context.leaf.link = newLeaf;
                 context.leaf = newLeaf;
+                context.stack.push(newLeaf);
                 context.processChildren = true;
             }
         };
