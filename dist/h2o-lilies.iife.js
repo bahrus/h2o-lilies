@@ -176,8 +176,9 @@ class H2O_TF extends XtallatX(HTMLElement) {
                             return;
                         this.process(node, context);
                     });
-                    const p = context.stack.pop();
-                    context.leaf = p;
+                    const s = context.stack;
+                    s.pop();
+                    context.leaf = s.length > 0 ? s[s.length - 1] : null;
                 }
             }
         }
