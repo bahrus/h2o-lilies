@@ -191,8 +191,10 @@ class H2OLilies extends H2O_TF {
             'ul': (context) => {
                 const ul = context.el;
                 const newLeaf = {
+                    type: 'list',
                     id: ul.id,
                     data: ul.dataset,
+                    role: ul.getAttribute('role'),
                     items: [],
                 };
                 if (context.stack.length === 0) {
@@ -208,11 +210,27 @@ class H2OLilies extends H2O_TF {
             'li': (context) => {
                 const li = context.el;
                 const newLeaf = {
+                    type: 'item',
                     text: li.firstChild !== null ? li.firstChild.nodeValue : null,
                     id: li.id,
-                    data: li.dataset
+                    data: li.dataset,
+                    role: li.getAttribute('role'),
                 };
                 context.leaf.items.push(newLeaf);
+                context.leaf = newLeaf;
+                context.processChildren = true;
+            },
+            'a': (context) => {
+                const a = context.el;
+                const newLeaf = {
+                    type: 'link',
+                    text: a.firstChild !== null ? a.firstChild.nodeValue : null,
+                    id: a.id,
+                    data: a.dataset,
+                    role: a.getAttribute('role'),
+                    tabIndex: a.tabIndex,
+                };
+                context.leaf.link = newLeaf;
                 context.leaf = newLeaf;
                 context.processChildren = true;
             }
