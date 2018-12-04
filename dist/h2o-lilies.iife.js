@@ -191,13 +191,8 @@ class H2OLilies extends H2O_TF {
         this.transform = {
             'ul': (context) => {
                 const ul = context.el;
-                const newLeaf = {
-                    type: 'list',
-                    id: ul.id,
-                    data: ul.dataset,
-                    role: ul.getAttribute('role'),
-                    items: [],
-                };
+                const newLeaf = this.makeLeaf(ul);
+                newLeaf.items = [];
                 if (context.stack.length === 0) {
                     context.leaf.root = newLeaf;
                 }
@@ -210,13 +205,8 @@ class H2OLilies extends H2O_TF {
             },
             'li': (context) => {
                 const li = context.el;
-                const newLeaf = {
-                    type: 'item',
-                    text: li.firstChild !== null ? li.firstChild.nodeValue : null,
-                    id: li.id,
-                    data: li.dataset,
-                    role: li.getAttribute('role'),
-                };
+                const newLeaf = this.makeLeaf(li);
+                newLeaf.text = li.firstChild !== null ? li.firstChild.nodeValue : null;
                 context.leaf.items.push(newLeaf);
                 context.leaf = newLeaf;
                 context.stack.push(newLeaf);
@@ -224,19 +214,23 @@ class H2OLilies extends H2O_TF {
             },
             'a': (context) => {
                 const a = context.el;
-                const newLeaf = {
-                    type: 'link',
-                    text: a.firstChild !== null ? a.firstChild.nodeValue : null,
-                    id: a.id,
-                    data: a.dataset,
-                    role: a.getAttribute('role'),
-                    tabIndex: a.tabIndex,
-                };
+                const newLeaf = this.makeLeaf(a);
+                newLeaf.text = a.firstChild !== null ? a.firstChild.nodeValue : null;
                 context.leaf.link = newLeaf;
                 context.leaf = newLeaf;
                 context.stack.push(newLeaf);
                 context.processChildren = true;
             }
+        };
+    }
+    makeLeaf(el) {
+        return {
+            id: el.id,
+            data: el.dataset,
+            role: el.getAttribute('role'),
+            tabIndex: el.tabIndex,
+            type: el.localName,
+            class: el.className
         };
     }
     connectedCallback() {

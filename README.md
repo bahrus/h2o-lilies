@@ -17,4 +17,4 @@ Another scenario where this web component is useful is in helping bring the data
 
 h2o-lilies doesn't hide or remove the DOM element it extracts data from. The reason is that the fancy renderer that needs the data may not be ready yet.  So the responsibility to hide the original (light) DOM nodes is left to other components.  As we said, h2o-lilies is quite specialized.
 
-To customize how the POJO is generated, extend this web component and override the [initTransform method](https://github.com/bahrus/h2o-lilies/blob/master/h2o-lilies.ts#L6)
+To customize how the POJO is generated, extend this web component and override / extend the [initTransform method](https://github.com/bahrus/h2o-lilies/blob/master/h2o-lilies.ts#L6)
