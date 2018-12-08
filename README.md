@@ -11,7 +11,7 @@ h2o-lilies takes the philosophical stance that there is honor in providing [high
 
 We may want the server to render an initial (or complete, with the bulk hidden, perhaps?) list of items that provides a fast, rudimentary, SEO-friendly view of something complex, before an expensive renderer (tree, chart, or grid, etc) JS library is downloaded, that wants to generate its fancy view based on a Plain Old JavaScript Object (POJO).
 
-Another scenario where this web component is useful is in helping bring the data contained in light DOM children into a more verbose HTML structure contained within the ShadowDOM of a web component. This scenario is illustrated below, based on [CSS-Only Nested Dropdown Navigation (ARIA)](https://codepen.io/gabriellewee/pen/oWyObX) found on code-pen:
+Another scenario where this web component may be useful is in helping bringing the data contained in light DOM children into a more verbose HTML structure contained within the ShadowDOM of a web component. This scenario is illustrated below, based on [CSS-Only Nested Dropdown Navigation (ARIA)](https://codepen.io/gabriellewee/pen/oWyObX) found on code-pen:
 
 
 

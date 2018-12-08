@@ -1,4 +1,4 @@
-import {H2O_TF} from 'h2o-tf/h2o-tf.js';
+import {H2O_TF, IContext} from 'h2o-tf/h2o-tf.js';
 import {define} from 'xtal-latx/define.js';
 
 export class H2OLilies extends H2O_TF{
@@ -14,18 +14,14 @@ export class H2OLilies extends H2O_TF{
                 }else{
                     context.leaf.sublist = newLeaf;
                 }
-                context.leaf = newLeaf
-                context.stack.push(newLeaf);
-                context.processChildren = true;
+                this.addLeafToStack(context, newLeaf);
             }, 
             'li': (context) =>{
                 const li = context.el! as HTMLLIElement;
                 const newLeaf = this.makeLeaf(li);
                 (<any>newLeaf).text =  li.firstChild!== null ? li.firstChild.nodeValue : null;
                 context.leaf.items.push(newLeaf);
-                context.leaf = newLeaf;
-                context.stack.push(newLeaf);
-                context.processChildren = true;
+                this.addLeafToStack(context, newLeaf);
                 
             },
             'a': (context) =>{
@@ -33,11 +29,14 @@ export class H2OLilies extends H2O_TF{
                 const newLeaf = this.makeLeaf(a);
                 (<any>newLeaf).text =  a.firstChild!== null ? a.firstChild.nodeValue : null;
                 context.leaf.link = newLeaf;
-                context.leaf = newLeaf;
-                context.stack.push(newLeaf);
-                context.processChildren = true;
+                this.addLeafToStack(context, newLeaf);
             }
         }
+    }
+    addLeafToStack(context: IContext, newLeaf: any){
+        context.leaf = newLeaf
+        context.stack.push(newLeaf);
+        context.processChildren = true;
     }
     makeLeaf(el: HTMLElement){
         return {

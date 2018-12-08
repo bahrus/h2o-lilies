@@ -14,29 +14,28 @@ export class H2OLilies extends H2O_TF {
                 else {
                     context.leaf.sublist = newLeaf;
                 }
-                context.leaf = newLeaf;
-                context.stack.push(newLeaf);
-                context.processChildren = true;
+                this.addLeafToStack(context, newLeaf);
             },
             'li': (context) => {
                 const li = context.el;
                 const newLeaf = this.makeLeaf(li);
                 newLeaf.text = li.firstChild !== null ? li.firstChild.nodeValue : null;
                 context.leaf.items.push(newLeaf);
-                context.leaf = newLeaf;
-                context.stack.push(newLeaf);
-                context.processChildren = true;
+                this.addLeafToStack(context, newLeaf);
             },
             'a': (context) => {
                 const a = context.el;
                 const newLeaf = this.makeLeaf(a);
                 newLeaf.text = a.firstChild !== null ? a.firstChild.nodeValue : null;
                 context.leaf.link = newLeaf;
-                context.leaf = newLeaf;
-                context.stack.push(newLeaf);
-                context.processChildren = true;
+                this.addLeafToStack(context, newLeaf);
             }
         };
+    }
+    addLeafToStack(context, newLeaf) {
+        context.leaf = newLeaf;
+        context.stack.push(newLeaf);
+        context.processChildren = true;
     }
     makeLeaf(el) {
         return {

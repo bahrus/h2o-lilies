@@ -1,7 +1,7 @@
 {
   "name": "h2o-lilies",
   "version": "0.0.7",
-  "description": "TBD",
+  "description": "Convert nested li's into a JS Object",
   "main": "h2o-lilies",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,9 +17,9 @@
   },
   "homepage": "https://github.com/bahrus/h2o-lilies#readme",
   "dependencies": {
-    "h2o-tf": "0.0.4"
+    "h2o-tf": "0.0.5"
   },
   "devDependencies": {
-    "jiife": "0.0.8"
+    "jiife": "0.0.9"
   }
 }
