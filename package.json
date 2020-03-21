@@ -17,9 +17,8 @@
   },
   "homepage": "https://github.com/bahrus/h2o-lilies#readme",
   "dependencies": {
-    "h2o-tf": "0.0.5"
+    "h2o-tf": "0.0.5",
+    "trans-render": "0.0.143"
   },
-  "devDependencies": {
-    "jiife": "0.0.9"
-  }
+  "devDependencies": {}
 }

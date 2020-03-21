@@ -1,5 +1,5 @@
 import {H2O_TF, IContext} from 'h2o-tf/h2o-tf.js';
-import {define} from 'xtal-latx/define.js';
+import {define} from 'trans-render/define.js';
 
 export class H2OLilies extends H2O_TF{
     static get is(){return 'h2o-lilies';}
